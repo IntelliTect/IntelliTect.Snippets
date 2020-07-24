@@ -65,11 +65,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="IntelliSnippets\IntelliSnippets.pkgdef">
+    <Content Include="IntelliSnippetsCSharp\IntelliSnippetsCSharp.pkgdef">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="IntelliSnippets\NonNullableProperty.snippet">
+    <Content Include="IntelliSnippetsCSharp\NonNullableProperty.snippet">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
