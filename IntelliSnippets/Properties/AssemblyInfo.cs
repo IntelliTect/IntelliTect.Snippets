@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("IntelliSnippets")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("IntelliTects")]
 [assembly: AssemblyProduct("IntelliSnippets")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="IntelliSnippets.7e3c5e36-28d5-44b9-b6dc-d3fdfca376b4" Version="1.0" Language="en-US" Publisher="Company" />
+        <Identity Id="IntelliSnippets.7e3c5e36-28d5-44b9-b6dc-d3fdfca376b4" Version="1.0" Language="en-US" Publisher="IntelliTect" />
         <DisplayName>IntelliSnippets</DisplayName>
-        <Description xml:space="preserve">Empty VSIX Project.</Description>
+        <Description xml:space="preserve">A selection of useful and rubust IntelliTect code snippets.</Description>
         <Icon>IntelliSnippetsIcon.png</Icon>
     </Metadata>
     <Installation>
