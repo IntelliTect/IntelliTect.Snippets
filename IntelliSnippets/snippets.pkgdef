@@ -1,0 +1,23 @@
+﻿// C#
+[$RootKey$\Languages\CodeExpansions\CSharp\Paths]
+"IntelliSnippets"="$PackageFolder$\Snippets\CSharp\IntelliSnippets"
+
+// CSS
+//[$RootKey$\Languages\CodeExpansions\CSS\Paths]
+//"IntelliSnippets"="$PackageFolder$\Snippets\CSS\IntelliSnippets"
+
+// HTML
+//[$RootKey$\Languages\CodeExpansions\HTML\Paths]
+//"IntelliSnippets"="$PackageFolder$\Snippets\HTML\IntelliSnippets"
+
+// JavaScript
+//[$RootKey$\Languages\CodeExpansions\JavaScript\Paths]
+//"IntelliSnippets"="$PackageFolder$\Snippets\JavaScript\IntelliSnippets"
+
+// SQL
+//[$RootKey$\Languages\CodeExpansions\SQL_SSDT\Paths]
+//"IntelliSnippets"="$PackageFolder$\Snippets\SQL\IntelliSnippets"
+
+// XML
+//[$RootKey$\Languages\CodeExpansions\XML\Paths]
+//"IntelliSnippets"="$PackageFolder$\Snippets\XML\IntelliSnippets"
