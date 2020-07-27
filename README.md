@@ -5,12 +5,12 @@ To add a snippet, change the extension of your xml file to `.snippet` and place 
 
 If adding a language you can refer to this [guide for help.](https://docs.microsoft.com/en-us/visualstudio/ide/how-to-distribute-code-snippets?view=vs-2019)
 
-New additions that are pulled into Master will automatically be published to the latest version of the IntelliSnippets VSIX extension (See updates).
+New snippets that are pulled into Master will automatically be published to the latest version of the IntelliSnippets VSIX extension (See updates).
 
 
 
 ### Updates
-To automatically have the latest IntelliSnippets at you disposal, be sure to have automatic updates enable under **Extensions** in Visual Studio's options:
+To automatically have the latest IntelliSnippets at you disposal, be sure to have automatic updates enabled under **Extensions** in Visual Studio's options:
  ![Extension Options](https://github.com/IntelliTect/IntelliSnippets/blob/master/READMEScreenshots/autoUpdateExtensions.JPG?raw=true)
 
 

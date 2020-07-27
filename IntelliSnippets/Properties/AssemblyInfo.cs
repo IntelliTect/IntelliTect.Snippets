@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("IntelliSnippets")]
+[assembly: AssemblyTitle("IntelliTect.Snippets")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("IntelliTects")]
-[assembly: AssemblyProduct("IntelliSnippets")]
+[assembly: AssemblyProduct("IntelliTect.Snippets")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

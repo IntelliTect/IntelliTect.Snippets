@@ -4,7 +4,7 @@ using System.Threading;
 using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
-namespace IntelliSnippets
+namespace IntelliTect.Snippets
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -24,8 +24,8 @@ namespace IntelliSnippets
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(IntelliSnippetsPackage.PackageGuidString)]
-    public sealed class IntelliSnippetsPackage : AsyncPackage
+    [Guid(IntelliTectSnippetsPackage.PackageGuidString)]
+    public sealed class IntelliTectSnippetsPackage : AsyncPackage
     {
         /// <summary>
         /// IntelliSnippetsPackage GUID string.

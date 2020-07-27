@@ -13,8 +13,8 @@
     <ProjectGuid>{078023D4-0D10-46C7-9CF0-C81C7CAC4434}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IntelliSnippets</RootNamespace>
-    <AssemblyName>IntelliSnippets</AssemblyName>
+    <RootNamespace>IntelliTect.Snippets</RootNamespace>
+    <AssemblyName>IntelliTect.Snippets</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <UseCodebase>true</UseCodebase>
@@ -46,7 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IntelliSnippetsPackage.cs" />
+    <Compile Include="IntelliTectSnippetsPackage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source.extension.vsixmanifest">
@@ -61,11 +61,11 @@
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="16.6.2058" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="IntelliSnippetsIcon.png">
+    <Content Include="IntelliTectSnippetsIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="Snippets\CSharp\IntelliSnippets\NonNullableProperty.snippet">
+    <Content Include="Snippets\CSharp\IntelliTect.Snippets\NonNullableProperty.snippet">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
