@@ -32,10 +32,6 @@ To automatically have the latest IntelliTect.Snippets at you disposal, be sure t
   
 
 |Shortcut |Description |
-
 |--|--|
-
 | `NonNullProp` |Code snippit for setting non nullable property |
-
 | | |
-
