@@ -10,7 +10,7 @@ New snippets that are pulled into Master will automatically be published to the 
 
 
 ### Updates
-To automatically have the latest IntelliSnippets at you disposal, be sure to have automatic updates enabled under **Extensions** in Visual Studio's options:
+To automatically have the latest IntelliSnippets at you disposal, be sure to have automatic updates enabled for IntelliTect.Snippets in Visual Studio's **Extension Manager**:
  ![Extension Options](https://github.com/IntelliTect/IntelliSnippets/blob/master/READMEScreenshots/autoUpdateExtensions.JPG?raw=true)
 
 
