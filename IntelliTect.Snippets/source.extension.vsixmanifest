@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="IntelliTect.Snippets.7e3c5e36-28d5-44b9-b6dc-d3fdfca376b4" Version="1.0" Language="en-US" Publisher="IntelliTect" />
+        <Identity Id="IntelliTect.Snippets.7e3c5e36-28d5-44b9-b6dc-d3fdfba376b4" Version="1.0.1" Language="en-US" Publisher="IntelliTect" />
         <DisplayName>IntelliTect.Snippets</DisplayName>
         <Description xml:space="preserve">A selection of useful and robust IntelliTect code snippets.</Description>
         <Icon>IntelliTectSnippetsIcon.png</Icon>

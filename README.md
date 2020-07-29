@@ -2,7 +2,7 @@
 
   
 
-##### *A VSIX extension for sharing code snippets.* [Available in Visual Studio Extension Marketplace](https://marketplace.visualstudio.com/items?itemName=IntelliTect-vs.intellitectsnippets)
+##### *A VSIX extension for sharing code snippets.* [Available in Visual Studio Extension Marketplace](https://marketplace.visualstudio.com/items?itemName=IntelliTect.intellitectsnippets)
 
   
 
