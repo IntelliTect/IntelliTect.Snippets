@@ -19,6 +19,11 @@ variables:
   value: 'Any CPU'
 - name: buildConfiguration
   value: 'Release'
+- name: builtVSIX
+  value: '**/bin/Release/*.vsix'
+- name: publishManifestPath
+  value: '**/bin/Release/publishManifest.json'
+ 
 
 
 steps:
@@ -35,6 +40,8 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- powershell: ./VsixPublisher publish -payload "\IntelliTect.Snippets\IntelliTect.Snippets\bin\Release\IntelliTect.Snippets.vsix" -publishManifest "C:\Users\saffron\source\repos\IntelliTect.Snippets\IntelliTect.Snippets\bin\Release\publishManifest.json" -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken	"$env:MarketplacePAT"
+- powershell: ./VsixPublisher publish -payload "$env:psBuiltVSIX" -publishManifest "psPublishManifestPath" -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken	"$env:psMarketplacePAT"
   env:
-    MarketplacePAT: $(vSMarketplacePAT)
+    psMarketplacePAT: $(vSMarketplacePAT)
+    psBuiltVSIX : $(builtVSIX)
+    psPublishManifestPath : $(publishManifestPath)
