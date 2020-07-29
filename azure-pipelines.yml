@@ -10,9 +10,16 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+- group: VSMarketplace
+- name: vSMarketplacePAT
+  value: $[variables._PersonalAccessToken]
+- name: solution
+  value: '**/*.sln'
+- name: buildPlatform
+  value: 'Any CPU'
+- name: buildConfiguration
+  value: 'Release'
+
 
 steps:
 - task: NuGetToolInstaller@1
@@ -28,7 +35,6 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+- powershell: ./VsixPublisher publish -payload "\IntelliTect.Snippets\IntelliTect.Snippets\bin\Release\IntelliTect.Snippets.vsix" -publishManifest "C:\Users\saffron\source\repos\IntelliTect.Snippets\IntelliTect.Snippets\bin\Release\publishManifest.json" -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken	"$env:MarketplacePAT"
+  env:
+    MarketplacePAT: $(vSMarketplacePAT)
