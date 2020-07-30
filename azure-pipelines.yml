@@ -20,20 +20,32 @@ variables:
 - name: buildConfiguration
   value: 'Release'
 - name: builtVSIX
-  value: 'D:\a\1\s\IntelliTect.Snippets\bin\Release\IntelliTect.Snippets.vsix'
+  value: '$(Build.SourcesDirectory)\IntelliTect.Snippets\bin\Release\IntelliTect.Snippets.vsix'
 - name: publishManifestPath
-  value: 'D:\a\1\s\IntelliTect.Snippets\bin\Release\publishManifest.json'
-- name: vsixPublisher
-  value: 'PublishingTools\VsixPublisher.exe'
+  value: '$(Build.SourcesDirectory)\IntelliTect.Snippets\bin\Release\publishManifest.json'
+
  
 
 
 steps:
+- task: NuGetToolInstaller@1
 
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
 
-- powershell: Start-Process -FilePath "$(Build.SourcesDirectory)\$(vsixPublisher)" 
-  env:
-    psMarketplacePAT: $(vSMarketplacePAT)
-   
-   
-   
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: PublishVisualStudioExtension@3
+  inputs:
+    connectedServiceName: 'VisualStudio marketplace Service connection'
+    vsixFile: '$(builtVSIX)'
+    manifestFile: '$(publishManifestPath)'
+    publisherId: 'IntelliTect'
+    ignoreWarnings: 'VSIXValidatorWarning01,VSIXValidatorWarning02'
+
