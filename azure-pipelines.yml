@@ -10,9 +10,6 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-- group: VSMarketplace
-- name: vSMarketplacePAT
-  value: $[variables._PersonalAccessToken]
 - name: solution
   value: '**/*.sln'
 - name: buildPlatform
@@ -23,9 +20,6 @@ variables:
   value: '$(Build.SourcesDirectory)\IntelliTect.Snippets\bin\Release\IntelliTect.Snippets.vsix'
 - name: publishManifestPath
   value: '$(Build.SourcesDirectory)\IntelliTect.Snippets\bin\Release\publishManifest.json'
-
- 
-
 
 steps:
 - task: NuGetToolInstaller@1
@@ -48,4 +42,4 @@ steps:
     manifestFile: '$(publishManifestPath)'
     publisherId: 'IntelliTect'
     ignoreWarnings: 'VSIXValidatorWarning01,VSIXValidatorWarning02'
-
+  
