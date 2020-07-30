@@ -10,9 +10,21 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+- group: VSMarketplace
+- name: vSMarketplacePAT
+  value: $[variables._PersonalAccessToken]
+- name: solution
+  value: '**/*.sln'
+- name: buildPlatform
+  value: 'Any CPU'
+- name: buildConfiguration
+  value: 'Release'
+- name: builtVSIX
+  value: '**/bin/Release/*.vsix'
+- name: publishManifestPath
+  value: '**/bin/Release/publishManifest.json'
+ 
+
 
 steps:
 - task: NuGetToolInstaller@1
@@ -28,7 +40,8 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+- powershell: echo "hello from powershell"
+  env:
+    psMarketplacePAT: $(vSMarketplacePAT)
+    psBuiltVSIX : $(builtVSIX)
+    psPublishManifestPath : $(publishManifestPath)
