@@ -23,6 +23,8 @@ variables:
   value: '**/bin/Release/*.vsix'
 - name: publishManifestPath
   value: '**/bin/Release/publishManifest.json'
+- name: vsixPublisher
+  value: '**/VsixPublisher.exe'
  
 
 
@@ -40,8 +42,9 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- powershell: echo "hello from powershell"
+- powershell: $env:psVsixPublisher publish -payload "$env:psBuiltVSIX" -publishManifest "psPublishManifestPath" -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken	"$env:psMarketplacePAT"
   env:
     psMarketplacePAT: $(vSMarketplacePAT)
     psBuiltVSIX : $(builtVSIX)
     psPublishManifestPath : $(publishManifestPath)
+    psVsixPublisher : $(vsixPublisher)
