@@ -20,11 +20,11 @@ variables:
 - name: buildConfiguration
   value: 'Release'
 - name: builtVSIX
-  value: '**/bin/Release/*.vsix'
+  value: 'IntelliTect.Snippets/IntelliTect.Snippets/bin/Release/IntelliTect.Snippets.vsix'
 - name: publishManifestPath
-  value: '**/bin/Release/publishManifest.json'
+  value: 'IntelliTect.Snippets/IntelliTect.Snippets/bin/Release/publishManifest.json'
 - name: vsixPublisher
-  value: '**/VsixPublisher.exe'
+  value: 'PublishingTools/VsixPublisher.exe'
  
 
 
@@ -42,7 +42,7 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- powershell: echo "$env:builtVSIX" 
+- powershell: echo $(Agent.BuildDirectory)$env:vsixPublisher
   env:
     psMarketplacePAT: $(vSMarketplacePAT)
    
