@@ -1,0 +1,85 @@
+<!--
+***********************************************************************************************
+Microsoft.VSSDK.Debugger.VSDConfigTool.targets
+
+This file adds targets to run the VsdConfigTool, which is used to compile .vsdconfigxml 
+files to the .vsdconfig format (and also C++ header files). This is used to build Visual 
+Studio Debugger Engine (Concord) components.
+
+See https://github.com/Microsoft/ConcordExtensibilitySamples/wiki for more information on
+Concord components.
+
+Copyright (C) Microsoft Corporation. All rights reserved.
+***********************************************************************************************
+-->
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!--Code for creating the .vsdconfig file. These are used for both managed and native project types-->
+  <PropertyGroup Condition="'$(OutputType)'=='library' or '$(TargetType)'=='DYNLINK'">
+    <VsdConfigFile Condition="'$(VsdConfigFile)'==''">$(OutputPath)$(TargetName).vsdconfig</VsdConfigFile>
+    <CreateVsdbgConfigFileDependsOn Condition="'$(Language)'=='C++' or '$(MSBuildProjectExtension)'=='.nativeproj'">Link</CreateVsdbgConfigFileDependsOn>
+    <CreateVsdbgConfigFileDependsOn Condition="'$(Language)'!='C++'">CopyFilesToOutputDirectory</CreateVsdbgConfigFileDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CreateVsdbgConfigFile"
+    Inputs="@(VsdConfigXmlFiles);$(OutputPath)$(AssemblyName).dll"
+    Condition="'@(VsdConfigXmlFiles)'!=''"
+    Outputs="$(VsdConfigFile)"
+    AfterTargets="$(CreateVsdbgConfigFileDependsOn)"
+    BeforeTargets="PostBuildEvent">
+
+    <Exec Command="&quot;$(MSBuildThisFileDirectory)vsdconfigtool.exe&quot; @(VsdConfigXmlFiles, ' ') &quot;$(OutputPath)$(AssemblyName).dll&quot; &quot;$(VsdConfigFile)&quot;" />
+  </Target>
+
+  <!--Add the vsdconfig file to the BuiltProjectOutputGroup-->
+  <Target Name="AddVsdbgConfigFileToOutputGroup" Condition="'@(VsdConfigXmlFiles)'!=''">
+    <CreateItem Include="$(VsdConfigFile)">
+      <Output TaskParameter="Include" ItemName="BuiltProjectOutputGroupOutput"/>
+    </CreateItem>
+  </Target>
+  <PropertyGroup>
+    <BuiltProjectOutputGroupDependsOn>$(BuiltProjectOutputGroupDependsOn);AddVsdbgConfigFileToOutputGroup</BuiltProjectOutputGroupDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CleanVsdbgConfigFile"
+    Condition="'@(VsdConfigXmlFiles)'!=''"
+    BeforeTargets="Clean">
+    <Delete Files="$(VsdConfigFile)"/>
+  </Target>
+
+  <!--Code for creating the .contract.h file.-->
+  <PropertyGroup Condition="'$(Language)'=='C++' and '$(CLRSupport)'!='true' and '$(NoVsdbgConfigContract)'!='true' and '$(MSBuildProjectExtension)'!='.nativeproj'">
+    <VsdConfigContractFile Condition="'$(VsdConfigContractFile)'=='' and '$(ComponentName)'!=''">$(IntDir)$(ComponentName).Contract.h</VsdConfigContractFile>
+    <VsdConfigContractFile Condition="'$(VsdConfigContractFile)'==''">$(IntDir)$(ProjectName).Contract.h</VsdConfigContractFile>
+    <CreateVsdbgConfigContractRunsBefore>ClCompile</CreateVsdbgConfigContractRunsBefore>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectExtension)'=='.nativeproj' and '$(NoVsdbgConfigContract)'!='true'">
+    <VsdConfigContractFile Condition="'$(VsdConfigContractFile)'=='' and '$(ComponentName)'!=''">$(IntermediateOutputPath)$(ComponentName).Contract.h</VsdConfigContractFile>
+    <VsdConfigContractFile Condition="'$(VsdConfigContractFile)'==''">$(IntermediateOutputPath)$(ProjectName).Contract.h</VsdConfigContractFile>
+    <CreateVsdbgConfigContractRunsBefore>BuildGenerated</CreateVsdbgConfigContractRunsBefore>
+  </PropertyGroup>
+  <Target Name="CreateVsdbgConfigContract"
+    Inputs="@(VsdConfigXmlFiles)"
+    Outputs="$(VsdConfigContractFile)"
+    Condition="'@(VsdConfigXmlFiles)'!='' and '$(VsdConfigContractFile)'!=''"
+    BeforeTargets="$(CreateVsdbgConfigContractRunsBefore)">
+
+    <Exec Command="&quot;$(MSBuildThisFileDirectory)vsdconfigtool.exe&quot; @(VsdConfigXmlFiles, ' ') $(VsdConfigContractFile)" />
+  </Target>
+  <ItemDefinitionGroup Condition="'$(Language)'=='C++' and '$(CLRSupport)'!='true' and '$(NoVsdbgConfigContract)'!='true' and '$(MSBuildProjectExtension)'!='.nativeproj'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(IntDir)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectExtension)'=='.nativeproj' and '$(NoVsdbgConfigContract)'!='true'">
+    <UserIncludes>$(UserIncludes);$(IntermediateOutputPath)</UserIncludes>
+  </PropertyGroup>
+  
+  <!--Code for cleaning the contract file-->
+  <Target Name="CleanVsdbgConfigContract"
+    Condition="'$(VsdConfigContractFile)'!=''"
+    BeforeTargets="Clean">
+    <Delete Files="$(VsdConfigContractFile)"/>
+  </Target>
+
+</Project>
