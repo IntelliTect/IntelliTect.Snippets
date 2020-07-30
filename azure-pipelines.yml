@@ -40,7 +40,7 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- powershell: ./VsixPublisher publish -payload "$env:psBuiltVSIX" -publishManifest "psPublishManifestPath" -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken	"$env:psMarketplacePAT"
+- powershell: echo "$env:psMarketplacePAT"
   env:
     psMarketplacePAT: $(vSMarketplacePAT)
     psBuiltVSIX : $(builtVSIX)
