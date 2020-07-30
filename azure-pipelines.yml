@@ -24,14 +24,14 @@ variables:
 - name: publishManifestPath
   value: 'D:\a\1\s\IntelliTect.Snippets\bin\Release\publishManifest.json'
 - name: vsixPublisher
-  value: 'D:\a\1\s\PublishingTools\VsixPublisher.exe'
+  value: 'PublishingTools\VsixPublisher.exe'
  
 
 
 steps:
 
 
-- powershell: $env:vsixPublisher publish
+- powershell: Start-Process -FilePath "$(Build.SourcesDirectory)\$(vsixPublisher)" 
   env:
     psMarketplacePAT: $(vSMarketplacePAT)
    
