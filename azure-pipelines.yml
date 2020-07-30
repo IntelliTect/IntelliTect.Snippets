@@ -40,7 +40,7 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- powershell: echo "$env:psMarketplacePAT"
+- powershell: echo "$env:PSMARKETPLACEPAT"
   env:
     psMarketplacePAT: $(vSMarketplacePAT)
     psBuiltVSIX : $(builtVSIX)
